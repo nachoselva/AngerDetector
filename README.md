@@ -1,4 +1,4 @@
-# AngerDetector
+# Anger Detector
 
 This system allow the user to send an email and, based on the speed of the key strokes, it detects if the user is angry. 
 In case it is, he recommends to take a break and calm down before sending the email.
@@ -9,12 +9,12 @@ The system analyses the last 5 seconds key strokes, it counts them and check if 
 
 ## Tech Stack
 
-Net Core 6
-WPF
-XUnit
-Moq
-FlaUI
-Github Actions
+- Net Core 6
+- WPF
+- XUnit
+- Moq
+- FlaUI
+- Github Actions
 
 ## Testing strategy
 
@@ -23,18 +23,16 @@ It is being used XUnit, Moq and FlaUI. Tests are divided in automation and unit 
 ## Run Building
 
 In order to build the project, run the following command in powershell:
-
-´´´
+```
 dotnet restore | dotnet build AngerDetector.Application
-´´´
+```
 
 ## Run Testing
 
 In order to run the tests suite, run the following command in powershell:
-
-´´´
+```
 dotnet restore | dotnet build AngerDetector.Application | dotnet test AngerDetector.Tests
-´´´
+```
 
 ## Local enviroment
 
@@ -47,6 +45,6 @@ In case this application is sent to production, we can add those steps in the cu
 
 ## Known issues
 
-Github repository configuration is pretty poor, as the repository is private, I was not able to configure branch protections and checks. In case I would be able to, I would like to do a previous check on builds and tests instead of doing it only once it is merged.
-When the Test is project is running locally, once all the tests have been executed, all the tests are run again without user intervention. I'm investigating if this could be bug in this system or in FlaUI nuget package.
+- Github repository configuration is pretty poor, as the repository is private, I was not able to configure branch protections and checks. In case I would be able to, I would like to do a previous check on builds and tests instead of doing it only once it is merged.
+- When the Test is project is running locally, once all the tests have been executed, all the tests are run again without user intervention. I'm investigating if this could be bug in this system or in FlaUI nuget package.
 
