@@ -10,7 +10,13 @@
     /// </summary>
     public partial class App : System.Windows.Application
     {
+        #region Private Variables
+
         private ServiceProvider _serviceProvider;
+
+        #endregion
+
+        #region Constructors
 
         public App()
         {
@@ -21,10 +27,16 @@
             _serviceProvider = services.BuildServiceProvider();
         }
 
+        #endregion
+
+        #region Private Members
+
         private void OnStartup(object sender, StartupEventArgs e)
         {
             SendEmailWindow mainWindow = _serviceProvider.GetService<SendEmailWindow>()!;
             mainWindow.Show();
         }
+
+        #endregion
     }
 }

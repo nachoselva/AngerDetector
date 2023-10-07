@@ -11,16 +11,16 @@
     /// </summary>
     public partial class MainWindow : Window
     {
-        public EmailViewModel ViewModel { get; }
-        public MainWindow(IAngerDetector angerDetector)
+        public SendEmailViewModel ViewModel { get; }
+        public MainWindow(IAngerDetectorService angerDetector)
         {
-            ViewModel = new EmailViewModel(angerDetector);
+            ViewModel = new SendEmailViewModel(angerDetector);
             DataContext = ViewModel;
             InitializeComponent();
 
             Binding bodyBinding = new Binding();
             bodyBinding.Source = ViewModel;
-            bodyBinding.Path = new PropertyPath(nameof(EmailViewModel.Body));
+            bodyBinding.Path = new PropertyPath(nameof(SendEmailViewModel.Body));
             bodyBinding.Mode = BindingMode.TwoWay;
             bodyBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
             BindingOperations.SetBinding(txtBody, TextBox.TextProperty, bodyBinding);

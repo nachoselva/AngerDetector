@@ -11,20 +11,25 @@
     /// </summary>
     public partial class SendEmailWindow : Window
     {
-        public EmailViewModel ViewModel { get; }
-        public SendEmailWindow(IAngerDetector angerDetector)
+        #region Constructors
+
+        public SendEmailWindow(IAngerDetectorService angerDetector)
         {
-            ViewModel = new EmailViewModel(angerDetector);
+            ViewModel = new SendEmailViewModel(angerDetector);
             DataContext = ViewModel;
             InitializeComponent();
 
             Binding bodyBinding = new Binding();
             bodyBinding.Source = ViewModel;
-            bodyBinding.Path = new PropertyPath(nameof(EmailViewModel.Body));
+            bodyBinding.Path = new PropertyPath(nameof(SendEmailViewModel.Body));
             bodyBinding.Mode = BindingMode.TwoWay;
             bodyBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
             BindingOperations.SetBinding(txtBody, TextBox.TextProperty, bodyBinding);
         }
+
+        #endregion
+
+        #region Private members
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
@@ -37,5 +42,13 @@
                 MessageBox.Show("Email was correctly sent", "Email succeded", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
+
+        #endregion
+
+        #region Public members
+
+        public SendEmailViewModel ViewModel { get; }
+
+        #endregion
     }
 }

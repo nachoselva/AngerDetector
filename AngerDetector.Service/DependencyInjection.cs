@@ -7,8 +7,8 @@
     {
         public static IServiceCollection AddService(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddScoped<IAngerDetector, AngerDetector>();
-            serviceCollection.AddScoped<IDateTimeProvider, DateTimeProvider>();
+            serviceCollection.AddScoped<IAngerDetectorService, AngerDetectorService>();
+            serviceCollection.AddScoped<IDateTimeService, DateTimeService>();
             return serviceCollection;
         }
     }
