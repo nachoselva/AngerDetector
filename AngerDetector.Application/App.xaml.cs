@@ -1,6 +1,7 @@
 ﻿namespace AngerDetector
 {
     using AngerDetector.Service;
+    using AngerDetector.Views;
     using Microsoft.Extensions.DependencyInjection;
     using System.Windows;
 
@@ -22,7 +23,7 @@
 
         private void OnStartup(object sender, StartupEventArgs e)
         {
-            MainWindow mainWindow = _serviceProvider.GetService<MainWindow>()!;
+            SendEmailWindow mainWindow = _serviceProvider.GetService<SendEmailWindow>()!;
             mainWindow.Show();
         }
     }

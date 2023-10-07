@@ -1,7 +1,7 @@
-﻿namespace AngerDetector
+﻿namespace AngerDetector.Views
 {
     using AngerDetector.Application.ViewModels;
-    using AngerDetector.Service;
+    using AngerDetector.Service.Contracts;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Data;
@@ -9,10 +9,10 @@
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SendEmailWindow : Window
     {
         public EmailViewModel ViewModel { get; }
-        public MainWindow(IAngerDetector angerDetector)
+        public SendEmailWindow(IAngerDetector angerDetector)
         {
             ViewModel = new EmailViewModel(angerDetector);
             DataContext = ViewModel;

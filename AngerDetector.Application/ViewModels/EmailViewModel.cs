@@ -1,6 +1,6 @@
 ﻿namespace AngerDetector.Application.ViewModels
 {
-    using AngerDetector.Service;
+    using AngerDetector.Service.Contracts;
     using System;
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
@@ -10,7 +10,7 @@
     {
         private const int MAXIMUM_KEYSTROKE_ALLOWED_PER_MINUTE = 400;
         private const int TYPING_SPEED_REFRESH_INTERVAL = 1000;
-        private readonly IAngerDetector _angerDetector;
+        private readonly IAngerDetector? _angerDetector;
         private readonly Timer _timerCheck;
         private string _to;
         private string _subject;
@@ -52,7 +52,7 @@
             get => _body;
             set
             {
-                _angerDetector.RegisterKeyStroke();
+                _angerDetector!.RegisterKeyStroke();
                 OnPropertyChanged(ref _body, value);
             }
         }
@@ -76,7 +76,7 @@
 
         private void RefreshTypingSpeed(object? sender, ElapsedEventArgs e)
         {
-            StrokesPerMinute = _angerDetector.CalculateKeyStrokesPerMinuteAverage();
+            StrokesPerMinute = _angerDetector!.CalculateKeyStrokesPerMinuteAverage();
         }
 
         public bool IsAngry => StrokesPerMinute > MAXIMUM_KEYSTROKE_ALLOWED_PER_MINUTE;

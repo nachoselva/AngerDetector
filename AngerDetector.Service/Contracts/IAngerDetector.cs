@@ -1,4 +1,4 @@
-﻿namespace AngerDetector.Service
+﻿namespace AngerDetector.Service.Contracts
 {
     public interface IAngerDetector
     {
