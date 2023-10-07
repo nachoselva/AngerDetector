@@ -11,7 +11,7 @@ namespace AngerDetector.Tests.Unit
         public void DefaultConstructor_InitializesProperties()
         {
             // Arrange
-            var viewModel = new EmailViewModel();
+            var viewModel = new SendEmailViewModel();
 
             // Act & Assert
             Assert.Equal(string.Empty, viewModel.To);
@@ -24,8 +24,8 @@ namespace AngerDetector.Tests.Unit
         public void ParameterizedConstructor_InitializesProperties()
         {
             // Arrange
-            var angerDetectorMock = new Mock<IAngerDetector>();
-            var viewModel = new EmailViewModel(angerDetectorMock.Object);
+            var angerDetectorMock = new Mock<IAngerDetectorService>();
+            var viewModel = new SendEmailViewModel(angerDetectorMock.Object);
 
             // Act & Assert
             Assert.Equal(string.Empty, viewModel.To);
@@ -38,7 +38,7 @@ namespace AngerDetector.Tests.Unit
         public void PropertyChanged_EventIsRaised()
         {
             // Arrange
-            var viewModel = new EmailViewModel();
+            var viewModel = new SendEmailViewModel();
             bool eventRaised = false;
             viewModel.PropertyChanged += (sender, args) => eventRaised = true;
 
@@ -53,7 +53,7 @@ namespace AngerDetector.Tests.Unit
         public void PropertyChanged_EventIsNotRaised_WhenValueIsNotChanged()
         {
             // Arrange
-            var viewModel = new EmailViewModel();
+            var viewModel = new SendEmailViewModel();
             bool eventRaised = false;
             viewModel.PropertyChanged += (sender, args) => eventRaised = true;
 
@@ -68,8 +68,8 @@ namespace AngerDetector.Tests.Unit
         public void Body_PropertyInvokesRegisterKeyStrokeMethod()
         {
             // Arrange
-            var angerDetectorMock = new Mock<IAngerDetector>();
-            var viewModel = new EmailViewModel(angerDetectorMock.Object);
+            var angerDetectorMock = new Mock<IAngerDetectorService>();
+            var viewModel = new SendEmailViewModel(angerDetectorMock.Object);
 
             // Act
             viewModel.Body = "Test Body";
@@ -82,7 +82,7 @@ namespace AngerDetector.Tests.Unit
         public void IsAngry_ReturnsTrue_WhenStrokesPerMinuteExceedsMaximum()
         {
             // Arrange
-            var viewModel = new EmailViewModel();
+            var viewModel = new SendEmailViewModel();
             viewModel.StrokesPerMinute = 401;
 
             // Act & Assert
@@ -93,7 +93,7 @@ namespace AngerDetector.Tests.Unit
         public void IsAngry_ReturnsFalse_WhenStrokesPerMinuteIsBelowMaximum()
         {
             // Arrange
-            var viewModel = new EmailViewModel();
+            var viewModel = new SendEmailViewModel();
             viewModel.StrokesPerMinute = 399;
 
             // Act & Assert

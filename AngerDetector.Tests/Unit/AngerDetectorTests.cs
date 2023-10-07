@@ -13,8 +13,8 @@
         {
             TestLogger.LogAutomationTest(nameof(AngerDetectorTests), nameof(RegisterKeyStroke_AddsTimestamp));
             // Arrange
-            var mockNowProvider = new Mock<IDateTimeProvider>();
-            var detector = new AngerDetector(mockNowProvider.Object);
+            var mockNowProvider = new Mock<IDateTimeService>();
+            var detector = new AngerDetectorService(mockNowProvider.Object);
 
             // Act
             detector.RegisterKeyStroke();
@@ -37,11 +37,11 @@
         [InlineData(60, 720)]
         public void CalculateKeyStrokesPerMinuteAverage_CalculatesAverage(int keyStrokesAmountInInterval, int expectedAverage)
         {
+            TestLogger.LogAutomationTest(nameof(AngerDetectorTests), nameof(CalculateKeyStrokesPerMinuteAverage_CalculatesAverage), keyStrokesAmountInInterval, expectedAverage);
             float keyStrokesSpeedInIntervalInSeconds = keyStrokesAmountInInterval / 5f;
-            TestLogger.LogAutomationTest(nameof(AngerDetectorTests), nameof(CalculateKeyStrokesPerMinuteAverage_CalculatesAverage));
             // Arrange
             DateTime now = new DateTime(2023, 01, 01);
-            var mockNowProvider = new Mock<IDateTimeProvider>();
+            var mockNowProvider = new Mock<IDateTimeService>();
             var sequence = mockNowProvider.SetupSequence(x => x.Now);
             int sequenceCount = 0;
 
@@ -61,7 +61,7 @@
                 sequence = sequence.Returns(now.AddSeconds(i / keyStrokesSpeedInIntervalInSeconds));
             }
 
-            var detector = new AngerDetector(mockNowProvider.Object);
+            var detector = new AngerDetectorService(mockNowProvider.Object);
 
             // Act
             for (int i = 0; i < sequenceCount - 1; i++)

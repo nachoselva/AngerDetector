@@ -2,17 +2,29 @@
 {
     using System.Collections.Generic;
 
-    public class AngerDetector : IAngerDetector
+    /// <inheritdoc/>
+    public class AngerDetectorService : IAngerDetectorService
     {
+        #region Private Variables
+
         private const int INTERVAL_IN_SECONDS = 5;
-        private readonly IDateTimeProvider _dateTimeProvider;
+        private readonly IDateTimeService _dateTimeProvider;
         private readonly SortedSet<long> keyStrokes = new SortedSet<long>();
 
-        public AngerDetector(IDateTimeProvider dateTimeProvider)
+        #endregion
+
+        #region Constructors
+
+        public AngerDetectorService(IDateTimeService dateTimeProvider)
         {
             _dateTimeProvider = dateTimeProvider;
         }
 
+        #endregion
+
+        #region Public Members
+
+        /// <inheritdoc/>
         public void RegisterKeyStroke()
         {
             lock (keyStrokes)
@@ -21,6 +33,7 @@
             }
         }
 
+        /// <inheritdoc/>
         public int CalculateKeyStrokesPerMinuteAverage()
         {
             long lastTickToInclude = _dateTimeProvider.Now.Ticks - INTERVAL_IN_SECONDS * TimeSpan.TicksPerSecond;
@@ -30,5 +43,7 @@
             }
             return keyStrokes.Count * (60 / INTERVAL_IN_SECONDS);
         }
+
+        #endregion
     }
 }
