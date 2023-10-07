@@ -1,5 +1,6 @@
 namespace AngerDetector.Tests.Automation
 {
+    using AngerDetector.Tests.Log;
     using FlaUI.Core;
     using FlaUI.Core.AutomationElements;
     using FlaUI.Core.Input;
@@ -15,11 +16,11 @@ namespace AngerDetector.Tests.Automation
         [Fact]
         public void No_Text_Input_Success()
         {
-            Application app = Application.Launch("AngerDetector.exe");
+            TestLogger.LogAutomationTest(nameof(SendEmailWindow), nameof(No_Text_Input_Success));
             using (var automation = new UIA3Automation())
             {
+                Application app = Application.AttachOrLaunch(new System.Diagnostics.ProcessStartInfo("AngerDetector.exe"));
                 var window = app.GetMainWindow(automation);
-
                 var txtBody = window.FindFirstDescendant(cf => cf.ByAutomationId("txtBody"))?.AsTextBox()!;
                 var btnSend = window.FindFirstDescendant(cf => cf.ByAutomationId("btnSend"))?.AsButton()!;
                 btnSend.Click();
@@ -38,9 +39,10 @@ namespace AngerDetector.Tests.Automation
         [InlineData(500)]
         public void Slow_Text_Input_Success(int sleepInMilliseconds)
         {
-            Application app = Application.Launch("AngerDetector.exe");
+            TestLogger.LogAutomationTest(nameof(SendEmailWindow), nameof(Slow_Text_Input_Success), sleepInMilliseconds);
             using (var automation = new UIA3Automation())
             {
+                Application app = Application.Launch("AngerDetector.exe");
                 var window = app.GetMainWindow(automation);
                 var txtBody = window.FindFirstDescendant(cf => cf.ByAutomationId("txtBody"))?.AsTextBox()!;
                 var btnSend = window.FindFirstDescendant(cf => cf.ByAutomationId("btnSend"))?.AsButton()!;
@@ -66,9 +68,10 @@ namespace AngerDetector.Tests.Automation
         [InlineData(20)]
         public void Fast_Text_Input_Failure(int sleepInMilliseconds)
         {
-            Application app = Application.Launch("AngerDetector.exe");
+            TestLogger.LogAutomationTest(nameof(SendEmailWindow), nameof(Fast_Text_Input_Failure), sleepInMilliseconds);
             using (var automation = new UIA3Automation())
             {
+                Application app = Application.Launch("AngerDetector.exe");
                 var window = app.GetMainWindow(automation);
                 var txtBody = window.FindFirstDescendant(cf => cf.ByAutomationId("txtBody"))?.AsTextBox()!;
                 var btnSend = window.FindFirstDescendant(cf => cf.ByAutomationId("btnSend"))?.AsButton()!;
