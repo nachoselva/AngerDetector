@@ -1,0 +1,23 @@
+name: dotnet package
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet-version: [ '6.0.x' ]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '6.0.x'
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build AngerDetector.Application
+    - name: Test with the dotnet CLI
+      run: dotnet test AngerDetector.Tests
+# We should place here app publishing logic to upload the version to productio
