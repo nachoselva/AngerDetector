@@ -1,6 +1,6 @@
 ﻿namespace AngerDetector.Service
 {
-    using AngerDetector.Service.Contracts;
+    using Contracts;
     using Microsoft.Extensions.DependencyInjection;
 
     public static class DependencyInjection
