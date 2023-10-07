@@ -3,6 +3,10 @@
 This system allow the user to send an email and, based on the speed of the key strokes, it detects if the user is angry. 
 In case it is, he recommends to take a break and calm down before sending the email.
 
+## Anger detection
+
+The system analyses the last 5 seconds key strokes, it counts them and check if the speed is higher than 400 keys per minute.
+
 ## Tech Stack
 
 Net Core 6
