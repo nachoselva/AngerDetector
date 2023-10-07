@@ -1,0 +1,21 @@
+﻿<Window x:Name="winSendEmail" x:Class="AngerDetector.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Send Email" Height="350" Width="800" MinWidth="800" MinHeight="350" MaxWidth="800" MaxHeight="350" ResizeMode="NoResize">
+    <Grid Background="Wheat" Margin="0,0,0,-6" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="228*"/>
+            <ColumnDefinition Width="565*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lblTo" Content="To" HorizontalAlignment="Left" Margin="17,23,0,0" VerticalAlignment="Top" Grid.Column="1" Width="62"/>
+        <Label x:Name="lblSubject" Content="Subject" HorizontalAlignment="Left" Margin="17,50,0,0" VerticalAlignment="Top" Grid.Column="1" Width="62"/>
+        <Button x:Name="btnSend" Content="Send" HorizontalAlignment="Left" Height="49" Margin="456,27,0,0" VerticalAlignment="Top" Width="79" Grid.Column="2" Click="btnSend_Click" AutomationProperties.AutomationId="btnSend"/>
+        <TextBox x:Name="txtTo" HorizontalAlignment="Left" Margin="84,23,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="588" Grid.Column="1" Height="26" Grid.ColumnSpan="2" />
+        <TextBox x:Name="txtSubject" HorizontalAlignment="Left" Margin="84,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="588" Grid.Column="1" Height="24" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="txtBody" HorizontalAlignment="Left" Margin="17,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="746" Height="196" Grid.Column="1" AutomationProperties.AutomationId="txtBody" Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>
