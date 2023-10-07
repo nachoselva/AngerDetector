@@ -1,7 +1,7 @@
 ﻿namespace AngerDetector
 {
     using AngerDetector.Application.ViewModels;
-    using AngerDetector.Service;
+    using AngerDetector.Service.Contracts;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Data;

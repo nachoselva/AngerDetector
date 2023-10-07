@@ -1,7 +1,9 @@
 ﻿namespace AngerDetector.Application.ViewModels
 {
+    using AngerDetector.Service.Contracts;
     using System;
     using System.ComponentModel;
+    using System.Runtime.CompilerServices;
     using System.Timers;
 
     public class EmailViewModel : INotifyPropertyChanged
